@@ -1,0 +1,46 @@
+Challenge 1 answer:
+A Series is a 1-dimensional labeled array, like one column with an index.
+A DataFrame is a 2-dimensional labeled structure, also a collection of aligned Series sharing the same index.Hence, DataFrame is literally a dictionary of Series objects where each Series represents a column. A DataFrame can be built by combining a multiple of series.
+
+How a DataFrame is constructed from multiple Series:
+s1 = pd.Series([25, 30, 35], index=['a', 'b', 'c'])
+s2 = pd.Series(['Alice', 'Bob', 'Charlie'], index=['a', 'b', 'c'])
+
+df = pd.DataFrame({
+    'Age': s1,
+    'Name': s2
+})
+
+print(df)
+
+2. What happens to the Index when combining Series:
+=> If all Series share the same index:
+ie index = ['a', 'b', 'c'] for both, DataFrame keeps that index exactly, No missing values.
+=> With different indexes:
+Pandas takes the union of all indexes, it aligns data by index labels, missing values are filled with NaN
+
+3. Numpy vs Pandas
+Numpy is focused on computation. It is designed for fast numerical computation,
+Works with homogeneous data (same data type),
+Uses n-dimensional arrays (ndarray),
+Optimized with C under the hood.
+Numpy solves problems like simulations, Scientific computing, matrix operations, no looping(vectorized math).
+
+Pandas is focuses Data management. Designed for data manipulation & analysis,
+Works with heterogeneous data (mixed types) and
+Uses Series (1D) and DataFrame (2D)
+
+Pandas solves problems like cleaning messy datasets,Handling missing values,
+Filtering, grouping, joining data
+Working with labeled/tabular data (like SQL tables)
+=>Why NumPy is considered 'Low-Level' and Pandas is considered 'High-Level.'
+- Numpy is closer to machine-efficient operations
+- Numpy works with raw arrays, no labels
+
+Pandas is considered 'high-level':
+- It is built on top of Numpy
+- Adds labels, data alignment
+
+All in all, NumPy provides fast, low-level numerical 
+computation using arrays, while Pandas provides high-level 
+data structures and operations for managing and analyzing labeled data.
